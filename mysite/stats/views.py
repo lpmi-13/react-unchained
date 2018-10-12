@@ -5,9 +5,9 @@ from stats.serializers import OldUserSerializer
 from rest_framework import generics
 
 class UserListCreate(generics.ListCreateAPIView):
-    queryset = User.objects.all().order_by('-contribs')
+    queryset = User.objects.all().order_by('-contribs')[:100]
     serializer_class = UserSerializer
 
 class OldUserListCreate(generics.ListCreateAPIView):
-    queryset = Old_User.objects.all().order_by('-contribs')
+    queryset = Old_User.objects.all().order_by('-contribs')[:100]
     serializer_class = OldUserSerializer
