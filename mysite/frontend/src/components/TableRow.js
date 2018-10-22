@@ -1,5 +1,6 @@
 // Vendor
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const TableRow = ({ rowNumber, userName, contributions }) => {
   return (
@@ -9,6 +10,12 @@ const TableRow = ({ rowNumber, userName, contributions }) => {
       <td>{contributions}</td>
     </tr>
   );
+}
+
+TableRow.propTypes = {
+  contributions: PropTypes.number.isRequired,
+  rowNumber: PropTypes.number.isRequired,
+  userName: PropTypes.string.isRequired,
 }
 
 export default TableRow;

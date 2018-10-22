@@ -13,6 +13,7 @@ const Header = () => (
       </Button>
       <button type='button' className='btn btn-default navbar-btn'><Link to='/original_list'>Original List</Link></button>
       <button type='button' className='btn btn-default navbar-btn'><Link to='/updated_list'>Updated List</Link></button>
+      <button type='button' className='btn btn-default navbar-btn'><Link to='/search'>Search</Link></button>
     </div>
   </div>
 );

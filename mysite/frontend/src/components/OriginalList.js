@@ -1,15 +1,11 @@
 // Vendor
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import key from 'weak-key';
 import PropTypes from 'prop-types';
 
 // Application
-import { fetchOriginalList } from '../actions';
 import { FETCH_ORIGINAL_LIST } from '../constants';
-
-import TableRow from './TableRow';
-import OriginalAlgoCode from './OriginalAlgoCode';
+import ResultsTable from './ResultsTable';
 
 class ConnectedOriginalList extends Component {
 
@@ -21,34 +17,16 @@ class ConnectedOriginalList extends Component {
 
   render() {
 
-    const { error, fetching, alreadyFetched, users } = this.props;
+    const { extraText, fetching, users } = this.props;
 
     return (
       <div>
-        <div>
-          <OriginalAlgoCode />
-          <table>
-            <thead>
-              <tr>
-                <th scope="col">Rank</th>
-                <th scope="col">User</th>
-                <th scope="col">Contributions</th>
-              </tr>
-            </thead>
-            <tbody>
-              { fetching ? <div>Loading...</div> : users.map((user, i) => ( <TableRow
-                key={user.login}
-                rowNumber={i + 1}
-                userName={user.login}
-                contributions={user.contribs}
-         />)) }
-            </tbody>
-          </table>
-        </div>
+          {extraText()}
+          <ResultsTable fetching={fetching} users={users} />
       </div>
     )
   }
-};
+}
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -64,6 +42,14 @@ const mapStateToProps = state => {
     alreadyFetched: state.originalAlreadyFetched
   };
 };
+
+ConnectedOriginalList.propTypes = {
+  alreadyFetched: PropTypes.bool.isRequired,
+  extraText: PropTypes.func.isRequired,
+  fetching: PropTypes.bool.isRequired,
+  onFetchOriginalList: PropTypes.func.isRequired,
+  users: PropTypes.array.isRequired,
+}
 
 const OriginalList = connect(mapStateToProps, mapDispatchToProps)(ConnectedOriginalList);
 

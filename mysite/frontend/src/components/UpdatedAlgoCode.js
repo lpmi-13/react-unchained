@@ -19,7 +19,14 @@ const UpdatedAlgoCode = () => {
       <pre><code>
       {`github.com/USER/REPO_NAME/pull/#`}
       </code></pre>
-      isn't the same as the author of the PR, we add the repo name to the list. The score is the set of all unique repo names in the list for a given username.</p>
+      is not the same as the author of the PR, we add the repo name to the list. The score is the set of all unique repo names in the list for a given username.</p>
+      <div>
+        <h2>The updated list</h2>
+        <p>(Note: these numbers are not restricted to
+        a particular time and reflect the sum of all
+        merged PRs from a particular user)</p>
+      </div>
+    
     </div>
   );
 };
