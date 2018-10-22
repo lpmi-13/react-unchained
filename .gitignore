@@ -1,4 +1,5 @@
 *.yml
 .env
+*.pyc
 node_modules
 main.js
