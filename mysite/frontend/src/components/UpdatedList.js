@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import Typography from '@material-ui/core/Typography';
 
 // Application
 import { FETCH_UPDATED_LIST } from '../constants';
@@ -20,10 +21,10 @@ class ConnectedUpdatedList extends Component {
     const { extraText, fetching, users } = this.props;
 
     return (
-      <div>
-          {extraText()}
-          <ResultsTable fetching={fetching} users={users} />
-      </div>
+      <Typography>
+        {extraText()}
+        <ResultsTable fetching={fetching} users={users} />
+      </Typography>
     )
   }
 }

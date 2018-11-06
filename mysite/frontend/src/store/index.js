@@ -1,24 +1,26 @@
 import { 
   applyMiddleware,
-  combineReducers,
+  createStore,
   compose,
-  createStore
 } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import listReducer from '../reducers';
 import {
   originalWatcherSaga,
-  updatedWatcherSaga
+  updatedWatcherSaga,
+  searchWatcherSaga,
 } from '../sagas';
 
 const sagaMiddleware = createSagaMiddleware();
 
-const store = createStore(
-  listReducer,
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(listReducer,
+  composeEnhancers(
   applyMiddleware(sagaMiddleware)
-);
+));
 
 sagaMiddleware.run(updatedWatcherSaga);
 sagaMiddleware.run(originalWatcherSaga);
+sagaMiddleware.run(searchWatcherSaga);
 
 export default store;

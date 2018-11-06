@@ -11,7 +11,6 @@ import Search from './Search';
 import store from '../store';
 import UpdatedAlgoCode from './UpdatedAlgoCode';
 import UpdatedList from './UpdatedList';
-
 import '../styles/custom.css';
 
 const Main = () => (

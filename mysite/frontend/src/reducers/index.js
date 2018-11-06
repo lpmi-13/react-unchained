@@ -5,6 +5,9 @@ import {
   FETCH_UPDATED_LIST,
   FETCH_UPDATED_LIST_ERROR,
   FETCH_UPDATED_LIST_SUCCESS,
+  SEARCH_USERS,
+  SEARCH_USERS_ERROR,
+  SEARCH_USERS_SUCCESS,
 } from '../constants';
 
 const initialState = {
@@ -12,6 +15,8 @@ const initialState = {
     originalError: null,
     originalFetching: false,
     originalUsers: [],
+    searchError: false,
+    searchingUsers: false,
     updatedAlreadyFetched: false,
     updatedError: null,
     updatedFetching: false,
@@ -63,6 +68,30 @@ const listReducer = (state = initialState, payload) => {
         updatedError: null,
         updatedFetching: false,
         updatedUsers: payload.users,
+      };
+
+    case SEARCH_USERS:
+      return {
+        ...state,
+        searchError: false,
+        searchResults: [],
+        searchingUsers: true,
+      };
+
+    case SEARCH_USERS_ERROR:
+      return {
+        ...state,
+        searchError: payload.error,
+        searchResults: [],
+        searchingUsers: false,
+      };
+
+    case SEARCH_USERS_SUCCESS:
+      return {
+        ...state,
+        searchError: null,
+        searchResults: payload.searchResults,
+        searchingUsers: false,
       };
 
     default:

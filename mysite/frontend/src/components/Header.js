@@ -1,21 +1,69 @@
 // Vendor
-import React from 'react';
-import { Button, Glyphicon } from 'react-bootstrap';
+import React, { Component } from 'react';
+import AppBar from '@material-ui/core/AppBar';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
 import { Link } from 'react-router-dom';
+import { withStyles } from '@material-ui/core/styles';
 
-const Header = () => (
-  <div className="navbar navbar-default navbar-fixed-top navbar-inverse">
-    <div className="navbar-header">
-      <Button >
-        <Link to='/'>
-          <Glyphicon glyph='home' />
-        </Link>
-      </Button>
-      <button type='button' className='btn btn-default navbar-btn'><Link to='/original_list'>Original List</Link></button>
-      <button type='button' className='btn btn-default navbar-btn'><Link to='/updated_list'>Updated List</Link></button>
-      <button type='button' className='btn btn-default navbar-btn'><Link to='/search'>Search</Link></button>
-    </div>
-  </div>
-);
+const styles = {
+  root: {
+    display: 'flex',
+    justify: 'space-between',
+  },
+};
 
-export default Header;
+class HeaderAppBar extends Component {
+
+  state = {
+    anchorEl: null,
+  };
+
+  handleClick = event =>{
+    this.setState({ anchorEl: event.currentTarget });
+  };
+
+  handleClose = () => {
+    this.setState({ anchorEl: null });
+  };
+
+  render() {
+    const { anchorEl } = this.state;
+
+    return (
+      <div>
+       <AppBar position="static">
+         <Toolbar className="toolbar">
+             <Typography>Github User Stats</Typography>
+             <IconButton
+               aria-owns={ anchorEl ? 'simple-menu' : null}
+               aria-haspopup="true"
+               onClick={this.handleClick} 
+               className="menuButton"
+               color="inherit" 
+               aria-label="Menu">
+               <MenuIcon />
+             </IconButton>
+             <Menu
+               id="simple-menu"
+               anchorEl={anchorEl}
+               open={Boolean(anchorEl)}
+               onClose={this.handleClose}
+               >
+               <MenuItem onClick={this.handleClose}><Link to='/'>Home</Link></MenuItem>
+               <MenuItem onClick={this.handleClose}><Link to='/original_list'>Original</Link></MenuItem>
+               <MenuItem onClick={this.handleClose}><Link to='/updated_list'>Updated</Link></MenuItem>
+               <MenuItem onClick={this.handleClose}><Link to='/search'>Search</Link></MenuItem>
+             </Menu>
+         </Toolbar>
+       </AppBar>
+     </div>
+    )
+  }
+}
+
+export default withStyles(styles)(HeaderAppBar);
