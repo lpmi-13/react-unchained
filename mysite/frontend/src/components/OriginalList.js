@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 // Application
 import { FETCH_ORIGINAL_LIST } from '../constants';
@@ -19,11 +20,11 @@ class ConnectedOriginalList extends Component {
   render() {
 
     const { extraText, fetching, users } = this.props;
-
     return (
       <Typography>
         {extraText()}
-        <ResultsTable fetching={fetching} users={users} />
+        {!fetching && <ResultsTable users={users} />}
+        {fetching && <CircularProgress />}
       </Typography>
     )
   }
