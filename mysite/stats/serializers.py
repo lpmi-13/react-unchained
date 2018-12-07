@@ -1,13 +1,13 @@
 from rest_framework import serializers
-from stats.models import User
-from stats.models import Old_User
+from stats.models import Unique_Commits_User
+from stats.models import Total_Commits_User
 
-class UserSerializer(serializers.ModelSerializer):
+class UniqueCommitsUserSerializer(serializers.ModelSerializer):
     class Meta:
-        model = User
+        model = Unique_Commits_User
         fields = ('login', 'contribs')
 
-class OldUserSerializer(serializers.ModelSerializer):
+class TotalCommitsUserSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Old_User
+        model = Total_Commits_User
         fields = ('login', 'contribs')

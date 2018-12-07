@@ -1,6 +1,5 @@
 // Vendor
-import React, { Component } from 'react';
-import key from 'weak-key';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import Table from '@material-ui/core/Table';
@@ -10,55 +9,30 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
-const styles = ({
-  root: {
-    flexgrow: 1,
-    marginTop: '.15em',
-    overflowX: 'auto',
-  },
-});
+import UserResults from './UserResults';
 
-class ResultsTable extends Component {
+const ResultsTable = props => {
 
-  render() {
-    const { users } = this.props;
-
-    return (
-      <Paper className={styles.root}>
-        <Grid container spacing={24}>
-          <Grid item xs={6}>
-            <Table>
-              <TableHead>
-                <TableRow>
-                  <TableCell>Rank</TableCell>
-                  <TableCell>User</TableCell>
-                  <TableCell>Contributions</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {users.map((user, i) => {
-                  return (
-                    <TableRow key={key(user)}>
-                      <TableCell component="th" scope="row">
-                        {i+1}
-                      </TableCell>
-                      <TableCell>{user.login}</TableCell>
-                      <TableCell>{user.contribs}</TableCell>
-                    </TableRow>
-                  );
-                })}
-              </TableBody>
-            </Table>
-          </Grid>
+  return (
+    <Paper classNames="results-table">
+      <Grid container spacing={24}>
+        <Grid item xs={6}>
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell>Rank</TableCell>
+                <TableCell>User</TableCell>
+                <TableCell>Contributions</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              <UserResults users={props} />
+            </TableBody>
+          </Table>
         </Grid>
-      </Paper>
-    )
-  }
-}
-
-ResultsTable.propTypes = {
-    fetching: PropTypes.bool.isRequired,
-    users: PropTypes.array.isRequired,
+      </Grid>
+    </Paper>
+  )
 }
 
 export default ResultsTable;

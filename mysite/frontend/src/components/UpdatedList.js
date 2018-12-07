@@ -9,7 +9,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import { FETCH_UPDATED_LIST } from '../constants';
 import ResultsTable from './ResultsTable';
 
-class ConnectedUpdatedList extends Component {
+class UpdatedList extends Component {
 
   componentDidMount() {
     if(!this.props.alreadyFetched) {
@@ -46,7 +46,7 @@ const mapStateToProps = state => {
   };
 };
 
-ConnectedUpdatedList.propTypes = {
+UpdatedList.propTypes = {
   alreadyFetched: PropTypes.bool.isRequired,
   extraText: PropTypes.func.isRequired,
   fetching: PropTypes.bool.isRequired,
@@ -54,6 +54,6 @@ ConnectedUpdatedList.propTypes = {
   users: PropTypes.array.isRequired,
 }
 
-const UpdatedList = connect(mapStateToProps, mapDispatchToProps)(ConnectedUpdatedList);
+export default connect(mapStateToProps, mapDispatchToProps)(UpdatedList);
 
-export default UpdatedList;
+export { UpdatedList };

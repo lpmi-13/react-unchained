@@ -31,14 +31,14 @@ export function* searchWatcherSaga() {
 function fetchOriginalList() {
   return axios({
     method: 'get',
-    url: `${BASE_API_URL}/old_stats/`
+    url: `${BASE_API_URL}/total_commits_stats/`
   });
 }
 
 function fetchUpdatedList() {
   return axios({
     method: 'get',
-    url: `${BASE_API_URL}/new_stats/`
+    url: `${BASE_API_URL}/unique_commits_stats/`
   });
 }
 

@@ -12,6 +12,11 @@ module.exports = {
     contentBase: './mysite/frontend/static/frontend/',
     hot: true
   },
+  externals: {
+    'cheerio': 'window',
+    'react/lib/ExecutionEnvironment': true,
+    'react/lib/ReactContext': true,
+  },
   plugins: [
     new CleanWebpackPlugin(['./mysite/frontend/static/frontend']),
     new webpack.HotModuleReplacementPlugin(),

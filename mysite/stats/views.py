@@ -1,32 +1,24 @@
-from stats.models import User
-from stats.models import Old_User
-from stats.serializers import UserSerializer
-from stats.serializers import OldUserSerializer
+from stats.models import Unique_Commits_User
+from stats.models import Total_Commits_User
+from stats.serializers import UniqueCommitsUserSerializer
+from stats.serializers import TotalCommitsUserSerializer
 from rest_framework import generics
 
+from stats.utils.input_validator import is_input_valid
 
-class OldUserListCreate(generics.ListCreateAPIView):
-    queryset = Old_User.objects.all().order_by('-contribs')[:100]
-    serializer_class = OldUserSerializer
+class UniqueCommitsUserListCreate(generics.ListCreateAPIView):
+    queryset = Unique_Commits_User.objects.all().order_by('-contribs')[:100]
+    serializer_class = UniqueCommitsUserSerializer
 
-class ReturnUsersCreate(generics.ListCreateAPIView):
-    serializer_class = UserSerializer
-
-    def get_queryset(self):
-        userName = self.request.query_params.post('username', None)
-        if userName is not None:
-            print('received a post')
-
+class TotalCommitsUserListCreate(generics.ListCreateAPIView):
+    queryset = Total_Commits_User.objects.all().order_by('-contribs')[:100]
+    serializer_class = TotalCommitsUserSerializer
 
 class SearchUsersCreate(generics.ListCreateAPIView):
-    serializer_class = UserSerializer
+    serializer_class = UniqueCommitsUserSerializer
 
     def get_queryset(self):
         userName = self.request.query_params.get('username', None)
-        if userName is not None:
-            queryset = User.objects.filter(login__icontains=userName).order_by('-contribs')
+        if is_input_valid(userName):
+            queryset = Unique_Commits_User.objects.filter(login__icontains=userName).order_by('-contribs')
             return queryset
-
-class UserListCreate(generics.ListCreateAPIView):
-    queryset = User.objects.all().order_by('-contribs')[:100]
-    serializer_class = UserSerializer

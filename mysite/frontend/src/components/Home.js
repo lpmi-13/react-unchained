@@ -15,7 +15,7 @@ const Home = () => (
     allowed to be considered.</p>
     <p>A shortcoming of this approach is that it vastly
     favors quantity over quality, but one big point I
-    hope to make here is that quantity can also be considered
+    hope to make here is that breadth + quantity can also be considered
     a type of quality.</p>
   </Typography>
 )

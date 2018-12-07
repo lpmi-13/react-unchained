@@ -109,10 +109,10 @@ const mapDispatchToProps = dispatch => {
 }
 
 
-const connectedSearch = connect(
+export default connect(
   mapStateToProps,
   mapDispatchToProps,
   )(Search);
   
 
-export default connectedSearch;
+export { Search };
