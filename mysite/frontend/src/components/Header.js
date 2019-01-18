@@ -55,8 +55,8 @@ class HeaderAppBar extends Component {
                onClose={this.handleClose}
                >
                <MenuItem onClick={this.handleClose}><Link to='/'>Home</Link></MenuItem>
-               <MenuItem onClick={this.handleClose}><Link to='/original_list'>Original</Link></MenuItem>
-               <MenuItem onClick={this.handleClose}><Link to='/updated_list'>Updated</Link></MenuItem>
+               <MenuItem onClick={this.handleClose}><Link to='/original_list'>Original List</Link></MenuItem>
+               <MenuItem onClick={this.handleClose}><Link to='/updated_list'>Updated List</Link></MenuItem>
                <MenuItem onClick={this.handleClose}><Link to='/search'>Search</Link></MenuItem>
              </Menu>
          </Toolbar>

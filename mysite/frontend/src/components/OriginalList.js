@@ -18,12 +18,13 @@ class OriginalList extends Component {
   } 
 
   render() {
+    const resultsLabel = 'total commits';
 
     const { extraText, fetching, users } = this.props;
     return (
       <Typography>
         {extraText()}
-        {!fetching && <ResultsTable users={users} />}
+        {!fetching && <ResultsTable label={resultsLabel} users={users} />}
         {fetching && <CircularProgress />}
       </Typography>
     )

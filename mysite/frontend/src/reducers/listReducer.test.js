@@ -55,7 +55,8 @@ describe('listReducer', () => {
     it('should handle FETCH_ORIGINAL_LIST_SUCCESS', () => {
       const originalUsers = [
         {
-          contribs: 888,
+          rank: 23,
+          contributions: 888,
           login: 'booyah',
         },
       ];
@@ -99,7 +100,8 @@ describe('listReducer', () => {
     it('should handle FETCH_UPDATED_LIST_SUCCESS', () => {
       const users = [
         {
-          contribs: 888,
+          rank: 45,
+          contributions: 888,
           login: 'booyah',
         },
       ];
@@ -142,7 +144,8 @@ describe('listReducer', () => {
     it('should handle SEARCH_USERS_SUCCESS', () => {
       const searchResults = [
         {
-          contribs: 888,
+          rank: 45,
+          contributions: 888,
           login: 'booyah',
         },
       ];

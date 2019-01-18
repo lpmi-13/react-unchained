@@ -1,5 +1,4 @@
 import React from 'react';
-import { stub } from 'sinon';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 import { OriginalList } from '../OriginalList';
@@ -14,14 +13,17 @@ const defaultProps = {
 }
 
 const mockedUsers = [
-    { 
-      contribs: 28287,
+    {
+      rank: 1, 
+      contributions: 28287,
       login: "toxtli"
     },
-    { contribs: 3838,
+    { rank: 2,
+      contributions: 3838,
       login: "fake-o"
     },
-    { contribs: 34,
+    { rank: 3,
+      contributions: 34,
       login: "funk-dubious"
     },
 ];
@@ -38,8 +40,7 @@ describe('the `OriginalList` component', () => {
       fetching: true,
     };
     const wrapper = mount(<OriginalList { ...propsWhileFetching } />);
-    console.log(wrapper.debug());
-    expect(wrapper.find(<CircularProgress/>)).length(1);
+    expect(wrapper.find(CircularProgress).length).to.equal(1);
   });
 
   it('should show the `ResultsTable` when not loading and results have returned', () => {
@@ -48,12 +49,11 @@ describe('the `OriginalList` component', () => {
       users: mockedUsers,
     }
     const wrapper = mount(<OriginalList { ...propsAfterResults } />);
-    console.log(wrapper.debug());
-    expect(wrapper.find(<CircularProgress/>)).length(0);
-    expect(wrapper.find('.results-table')).length(1);
+    expect(wrapper.find(CircularProgress).length).to.equal(0);
+    expect(wrapper.find(ResultsTable).length).to.equal(1);
   });
 
-  it.skip('should correctly load the full list of results', () => {
+  it('should correctly load the full list of results', () => {
     const promise = Promise.resolve(mockedUsers);
     const onFetchOriginalList = () => promise;
   
@@ -62,11 +62,9 @@ describe('the `OriginalList` component', () => {
     const wrapper = mount(<OriginalList {...updatedProps} />);
   
     return promise.then(() => {
-      expect(wrapper.state()).to.have.property('users', []);
-  
       wrapper.update();
     }).then(() => {
-      expect(wrapper.to.contain(<ResultsTable/>));
+      expect(wrapper.find(ResultsTable).length).to.equal(1);
     });
   });
 });

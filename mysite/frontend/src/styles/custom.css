@@ -1,8 +1,20 @@
+.container {
+  align-items: stretch;
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+  justify-content: space-evenly;
+}
+
 li a:link {
   text-decoration: none;
 }
 
-pre {
+.center-text {
+  text-align: center;
+}
+
+p {
   margin: 0.15rem;
   width: 90%;
 }
@@ -12,7 +24,17 @@ pre code {
   border: 1px solid #999;
   display: block;
   font-size: 0.7rem;
-  padding: 0.1rem;
+}
+
+.booyah {
+  padding-left: 2rem !important;
+  margin-bottom: 1.5rem !important;
+}
+
+.table-title {
+  background: #999;
+  flex-grow: 1;
+  padding: .1rem 0 .1rem 2.5rem;
 }
 
 .toolbar {

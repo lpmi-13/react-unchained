@@ -6,14 +6,14 @@ import TableRow from '@material-ui/core/TableRow';
 
 const UserResults = ({ users }) => {
   return (
-    users.map((user, i) => {
+    users.map((user) => {
       return (
         <TableRow className="user-row" key={key(user)}>
           <TableCell component="th" scope="row">
-            {i+1}
+            {user.rank}
           </TableCell>
           <TableCell>{user.login}</TableCell>
-          <TableCell>{user.contribs}</TableCell>
+          <TableCell>{user.contributions}</TableCell>
         </TableRow>
       );
     })

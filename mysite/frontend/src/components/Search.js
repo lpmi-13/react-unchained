@@ -10,14 +10,12 @@ import Typography from '@material-ui/core/Typography';
 // Application
 import ResultsTable from './ResultsTable';
 import { searchUsers } from '../actions';
+import {
+  ORIGINAL_RESULTS_LABEL,
+  UPDATED_RESULTS_LABEL,
+} from '../constants';
 
 class Search extends Component {
-  
-  propTypes = {
-    fetching: PropTypes.bool.isRequired,
-    onSearchUsers: PropTypes.func.isRequired,
-    searchResults: PropTypes.array,
-  }
   
   state = {
     name: '',
@@ -33,66 +31,94 @@ class Search extends Component {
     this.props.onSearchUsers({ userName: this.state.name });
   }
 
-  createUserList = users => {
-    return (
-      <Typography>
-        <ResultsTable users={users} />
-      </Typography>
+  render() {
+
+    const { props: { fetching, searchResults} } = this;
+    const styles = ({
+        root: {
+          flexGrow: 1,
+        },
+        button: {
+          margin: '.5em 0',
+        },
+        container: {
+          display: 'flex',
+          flexWrap: 'wrap',
+        },
+        textField: {
+          marginLeft: '.5em',
+          marginRight: '.5em',
+          width: 200,
+        },
+      });
+
+      return (
+      <div className={styles.root}>
+        <Grid container spacing={24}>
+          <Grid item xs={8}>
+            <TextField
+              id="standard-name"
+              label="user name"
+              className={styles.textField}
+              value={this.state.name}
+              onChange={this.handleChange('name')}
+              margin="normal"
+              variant="outlined"
+            />
+          </Grid>
+          <Grid item xs={8}>
+            <Button 
+              variant="contained"
+              className={`${styles.button} floater`}
+              onClick={this.handleOnClick}
+            >
+              Search
+            </Button>
+          </Grid>
+          
+          {fetching && "Loading..."}
+          {!fetching && searchResults ? 
+             Object.keys(searchResults).length > 0 ?
+             <Grid 
+               alignItems="stretch"
+               container 
+               direction="column"
+               justify="space-between" 
+             >
+              <div>
+                { searchResults.Rank_Total_Commits_Users &&
+                  <Grid item className="original-results">
+                    <Typography>
+                      <ResultsTable
+                        label={ORIGINAL_RESULTS_LABEL}
+                        users={searchResults.Rank_Total_Commits_Users}
+                      />
+                    </Typography>
+                  </Grid>
+                }
+                { searchResults.Rank_Unique_Commits_Users &&
+                  <Grid item className="updated-results">
+                    <Typography>
+                      <ResultsTable
+                        label={UPDATED_RESULTS_LABEL}
+                        users={searchResults.Rank_Unique_Commits_Users}
+                      />
+                    </Typography>
+                  </Grid>
+                }
+              </div>
+             </Grid> 
+             : 'no results' : ''}
+        </Grid>
+      </div>
     )
   }
+}
 
-  render() {
-      const { props: { fetching, searchResults} } = this;
-      const styles = ({
-          root: {
-            flexGrow: 1,
-          },
-          button: {
-            margin: '.5em 0',
-          },
-          container: {
-            display: 'flex',
-            flexWrap: 'wrap',
-          },
-          textField: {
-            marginLeft: '.5em',
-            marginRight: '.5em',
-            width: 200,
-          },
-        });
-  
-        return (
-        <div className={styles.root}>
-          <Grid container spacing={24}>
-            <Grid item xs={8}>
-              <TextField
-                id="standard-name"
-                label="user name"
-                className={styles.textField}
-                value={this.state.name}
-                onChange={this.handleChange('name')}
-                margin="normal"
-                variant="outlined"
-              />
-            </Grid>
-            <Grid item xs={8}>
-              <Button 
-                variant="contained"
-                className={`${styles.button} floater`}
-                onClick={this.handleOnClick}
-              >
-                Search
-              </Button>
-            </Grid>
-            {fetching && "Loading..."}
-            {!fetching && searchResults ? 
-               searchResults.length > 0 ?
-               this.createUserList(searchResults) 
-               : 'no results' : ''}
-          </Grid>
-        </div>
-      )
-    }
+Search.propTypes = {
+  fetching: PropTypes.bool.isRequired,
+  onSearchUsers: PropTypes.func.isRequired,
+  searchResults: PropTypes.array,
 }
 
 const mapStateToProps = state => {

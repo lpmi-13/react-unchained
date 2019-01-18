@@ -15,16 +15,17 @@ class UpdatedList extends Component {
     if(!this.props.alreadyFetched) {
       this.props.onFetchUpdatedList();
     }
-  } 
+  }
 
   render() {
+    const resultsLabel = 'unique merged PR\'s';
 
     const { extraText, fetching, users } = this.props;
 
     return (
       <Typography>
         {extraText()}
-        {!fetching && <ResultsTable users={users} />}
+        {!fetching && <ResultsTable label={resultsLabel} users={users} />}
         {fetching && <CircularProgress />}
       </Typography>
     )

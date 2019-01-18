@@ -2,16 +2,17 @@ import React from 'react';
 
 import UserResults from '../UserResults';
 
-
 const defaultProps = {
   users: [
     {
+      rank: 1,
       login: 'Django',
-      contribs: 3838,
+      contributions: 3838,
     },
     {
+      rank: 2,
       login: 'React',
-      contribs: 336,
+      contributions: 336,
     },
   ]
 };
@@ -19,7 +20,6 @@ const defaultProps = {
 describe('`UserResults component', () => {
   it('should render rows based on the results', () => {  
     const wrapper = shallow(<UserResults {...defaultProps} />);
-    console.log(wrapper.debug());
     expect(wrapper.find('.user-row')).length(2);
   });
 })

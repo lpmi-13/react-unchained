@@ -12,7 +12,8 @@ global.render = render;
 // -----------------
 // Chai
 // -----------------
-const { expect } = require('chai');
+const { assert, expect } = require('chai');
+global.assert = assert;
 global.expect = expect;
 
 // -----------------

@@ -9,8 +9,7 @@ import Header from './Header';
 import Main from './Main';
 
 const App = () => (
-  <div>
-    {/* <CSSBaseline /> */}
+  <div className="container">
     <Header />
     <Main />
   </div>
