@@ -34,32 +34,14 @@ class Search extends Component {
   render() {
 
     const { props: { fetching, searchResults} } = this;
-    const styles = ({
-        root: {
-          flexGrow: 1,
-        },
-        button: {
-          margin: '.5em 0',
-        },
-        container: {
-          display: 'flex',
-          flexWrap: 'wrap',
-        },
-        textField: {
-          marginLeft: '.5em',
-          marginRight: '.5em',
-          width: 200,
-        },
-      });
-
+    
       return (
-      <div className={styles.root}>
+      <div>
         <Grid container spacing={24}>
           <Grid item xs={8}>
             <TextField
               id="standard-name"
               label="user name"
-              className={styles.textField}
               value={this.state.name}
               onChange={this.handleChange('name')}
               margin="normal"
@@ -69,7 +51,7 @@ class Search extends Component {
           <Grid item xs={8}>
             <Button 
               variant="contained"
-              className={`${styles.button} floater`}
+              className="floater"
               onClick={this.handleOnClick}
             >
               Search
@@ -79,15 +61,9 @@ class Search extends Component {
           {fetching && "Loading..."}
           {!fetching && searchResults ? 
              Object.keys(searchResults).length > 0 ?
-             <Grid 
-               alignItems="stretch"
-               container 
-               direction="column"
-               justify="space-between" 
-             >
-              <div>
+              <div className="container">
                 { searchResults.Rank_Total_Commits_Users &&
-                  <Grid item className="original-results">
+                  <Grid item xs={18} className="original-results">
                     <Typography>
                       <ResultsTable
                         label={ORIGINAL_RESULTS_LABEL}
@@ -107,7 +83,6 @@ class Search extends Component {
                   </Grid>
                 }
               </div>
-             </Grid> 
              : 'no results' : ''}
         </Grid>
       </div>
