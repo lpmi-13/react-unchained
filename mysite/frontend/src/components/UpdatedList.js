@@ -40,10 +40,10 @@ const mapDispatchToProps = dispatch => {
 
 const mapStateToProps = state => {
   return { 
-    users: state.updatedUsers,
-    fetching: state.updatedFetching,
+    alreadyFetched: state.updatedAlreadyFetched,
     error: state.updatedError,
-    alreadyFetched: state.updatedAlreadyFetched
+    fetching: state.updatedFetching,
+    users: state.updatedUsers,
   };
 };
 

@@ -39,10 +39,10 @@ const mapDispatchToProps = dispatch => {
 
 const mapStateToProps = state => {
   return { 
-    users: state.originalUsers,
-    fetching: state.originalFetching,
+    alreadyFetched: state.originalAlreadyFetched,
     error: state.originalError,
-    alreadyFetched: state.originalAlreadyFetched
+    fetching: state.originalFetching,
+    users: state.originalUsers,
   };
 };
 
