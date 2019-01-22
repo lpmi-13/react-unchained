@@ -6,7 +6,7 @@ const OriginalAlgoCode = () => {
       <h2>The original list</h2>
       <p>
         the following data comes from the
-        <br /><a href='https://gist.github.com/paulmillr/2657075'>Github gist</a>    
+        <br/><a href='https://gist.github.com/paulmillr/2657075'>Github gist</a>
       </p>
       <p>
         According to the above page, this list counts all contributions

@@ -10,13 +10,8 @@ li a:link {
   text-decoration: none;
 }
 
-.center-text {
-  text-align: center;
-}
-
 p {
   margin: 0.15rem;
-  width: 90%;
 }
 
 pre code {
@@ -26,15 +21,16 @@ pre code {
   font-size: 0.7rem;
 }
 
-.booyah {
-  padding-left: 2rem !important;
-  margin-bottom: 1.5rem !important;
+.original-results,
+.updated-results,
+.results-table {
+  margin: 0.75em !important;
 }
 
 .table-title {
   background: #999;
   flex-grow: 1;
-  padding: .1rem 0 .1rem 2.5rem;
+  padding: .1rem 0 .1rem 1.15rem;
 }
 
 .toolbar {

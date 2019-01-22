@@ -6,11 +6,11 @@ const UpdatedAlgoCode = () => {
       <h2>Grabbing merged PRs</h2>
       <p>
         the following pseudocode is adapted from the
-        <a href='https://github.com/lpmi-13/githubuserstats'>Github repo</a>
+        <br/><a href='https://github.com/lpmi-13/githubuserstats'>Github repo</a>
       </p>
       <pre>
         <code>
-             {` issues = search_issues(login)
+             {`  issues = search_issues(login)
         for issue in issues:
             PR_data = issue.get_pull(PR_number)
             if PR_data.merged:
@@ -21,7 +21,7 @@ const UpdatedAlgoCode = () => {
       <p>If the username in the url</p>
       <pre>
         <code>
-          {`github.com/USER/REPO_NAME/pull/#`}
+          {`  github.com/USER/REPO_NAME/pull/#`}
         </code>
       </pre>
       <p>

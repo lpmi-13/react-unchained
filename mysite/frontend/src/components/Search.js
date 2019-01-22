@@ -33,7 +33,16 @@ class Search extends Component {
 
   render() {
 
-    const { props: { fetching, searchResults} } = this;
+    const {
+      props: {
+        fetching,
+        searchResults,
+        searchResults : {
+          Rank_Total_Commits_Users,
+          Rank_Unique_Commits_Users,
+        }
+      }
+    } = this;
     
       return (
       <div>
@@ -62,22 +71,22 @@ class Search extends Component {
           {!fetching && searchResults ? 
              Object.keys(searchResults).length > 0 ?
               <div className="container">
-                { searchResults.Rank_Total_Commits_Users &&
+                { Rank_Total_Commits_Users && Rank_Total_Commits_Users.length > 0 &&
                   <Grid item xs={18} className="original-results">
                     <Typography>
                       <ResultsTable
                         label={ORIGINAL_RESULTS_LABEL}
-                        users={searchResults.Rank_Total_Commits_Users}
+                        users={Rank_Total_Commits_Users}
                       />
                     </Typography>
                   </Grid>
                 }
-                { searchResults.Rank_Unique_Commits_Users &&
+                { Rank_Unique_Commits_Users && Rank_Unique_Commits_Users.length > 0 &&
                   <Grid item className="updated-results">
                     <Typography>
                       <ResultsTable
                         label={UPDATED_RESULTS_LABEL}
-                        users={searchResults.Rank_Unique_Commits_Users}
+                        users={Rank_Unique_Commits_Users}
                       />
                     </Typography>
                   </Grid>

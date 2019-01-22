@@ -15,7 +15,7 @@ import UserResults from './UserResults';
 
 const ResultsTable = ({ users, label }) => {
   return (
-    <Paper classNames="results-table booyah">
+    <Paper classNames="results-table">
       { <div className="table-title">
           <Typography variant="h6">
             {label ? label : ''}
