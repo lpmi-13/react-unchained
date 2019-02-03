@@ -10,7 +10,8 @@ module.exports = {
   },
   devServer: {
     contentBase: './mysite/frontend/static/frontend/',
-    hot: true
+    hot: true,
+    port: 8000,
   },
   externals: {
     'cheerio': 'window',

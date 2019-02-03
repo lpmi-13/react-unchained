@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "webpack-dev-server --hot --mode development --open --config ./mysite/webpack.config.js --progress --colors",
-    "dev-docker" : "docker-compose up && dev",
+    "dev-docker" : "npm run build && docker-compose up --build",
     "build": "webpack --mode production --config ./mysite/webpack.config.js",
     "test": "mocha --opts './mysite/frontend/testHelpers/mocha.opts' './mysite/frontend/src/**/*.test.js*'"
   },

@@ -1,6 +1,7 @@
-*.yml
+**/*.yml
+**/*.env
+**/*.pyc
+**/*.swp
 !docker-compose.yml
-*.pyc
-node_modules
 main.js
-.*
+node_modules
