@@ -10,6 +10,10 @@ li a:link {
   text-decoration: none;
 }
 
+.listCopy {
+  width: 75%;
+}
+
 p {
   margin: 0.15rem;
 }
@@ -23,13 +27,14 @@ pre code {
 
 .original-results,
 .updated-results,
+.no-results,
 .results-table {
   margin: 0.75em !important;
 }
 
 .table-title {
   background: #999;
-  flex-grow: 1;
+  flex-grow: 0;
   padding: .1rem 0 .1rem 1.15rem;
 }
 

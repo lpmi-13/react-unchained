@@ -2,12 +2,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 // Application
-import { FETCH_UPDATED_LIST } from '../constants';
 import ResultsTable from './ResultsTable';
+import UpdatedAlgoResults from './UpdatedAlgoCode';
+import {
+  FETCH_UPDATED_LIST,
+  UPDATED_RESULTS_LABEL
+} from '../constants';
 
 class UpdatedList extends Component {
 
@@ -18,16 +23,23 @@ class UpdatedList extends Component {
   }
 
   render() {
-    const resultsLabel = 'unique merged PR\'s';
 
-    const { extraText, fetching, users } = this.props;
+    const { fetching, users } = this.props;
 
     return (
-      <Typography>
-        {extraText()}
-        {!fetching && <ResultsTable label={resultsLabel} users={users} />}
-        {fetching && <CircularProgress />}
-      </Typography>
+      <div>
+        <Grid container direction="column" alignItems="flex-start" spacing={24}>
+          <Grid item xs={18}>
+            <UpdatedAlgoResults />
+          </Grid>
+          <Grid item xs={18} className="original-results">
+            <Typography>
+              {!fetching && <ResultsTable label={UPDATED_RESULTS_LABEL} users={users} />}
+              {fetching && <CircularProgress />}
+            </Typography>
+          </Grid>
+        </Grid>
+      </div>
     )
   }
 }

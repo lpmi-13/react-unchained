@@ -2,7 +2,7 @@ import React from 'react';
 
 const UpdatedAlgoCode = () => {
   return (
-    <div>
+    <div className="listCopy">
       <h2>Grabbing merged PRs</h2>
       <p>
         the following pseudocode is adapted from the

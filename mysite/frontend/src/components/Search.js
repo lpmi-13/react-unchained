@@ -11,6 +11,7 @@ import Typography from '@material-ui/core/Typography';
 import ResultsTable from './ResultsTable';
 import { searchUsers } from '../actions';
 import {
+  NO_RESULTS_LABEL,
   ORIGINAL_RESULTS_LABEL,
   UPDATED_RESULTS_LABEL,
 } from '../constants';
@@ -36,7 +37,6 @@ class Search extends Component {
     const {
       props: {
         fetching,
-        searchResults,
         searchResults : {
           Rank_Total_Commits_Users,
           Rank_Unique_Commits_Users,
@@ -44,9 +44,13 @@ class Search extends Component {
       }
     } = this;
     
-      return (
+    // we haz no search results!
+    const noSearchResults = Rank_Unique_Commits_Users && Rank_Unique_Commits_Users.length === 0 &&
+                            Rank_Total_Commits_Users && Rank_Total_Commits_Users.length === 0;
+
+    return (
       <div>
-        <Grid container spacing={24}>
+        <Grid container direction="column" alignItems="flex-start" spacing={24}>
           <Grid item xs={8}>
             <TextField
               id="standard-name"
@@ -68,31 +72,39 @@ class Search extends Component {
           </Grid>
           
           {fetching && "Loading..."}
-          {!fetching && searchResults ? 
-             Object.keys(searchResults).length > 0 ?
-              <div className="container">
-                { Rank_Total_Commits_Users && Rank_Total_Commits_Users.length > 0 &&
-                  <Grid item xs={18} className="original-results">
-                    <Typography>
-                      <ResultsTable
-                        label={ORIGINAL_RESULTS_LABEL}
-                        users={Rank_Total_Commits_Users}
-                      />
-                    </Typography>
-                  </Grid>
-                }
-                { Rank_Unique_Commits_Users && Rank_Unique_Commits_Users.length > 0 &&
-                  <Grid item className="updated-results">
-                    <Typography>
-                      <ResultsTable
-                        label={UPDATED_RESULTS_LABEL}
-                        users={Rank_Unique_Commits_Users}
-                      />
-                    </Typography>
-                  </Grid>
-                }
-              </div>
-             : 'no results' : ''}
+           {
+             Rank_Total_Commits_Users && Rank_Total_Commits_Users.length > 0 &&
+               <Grid item xs={18} className="original-results">
+                 <Typography>
+                   <ResultsTable
+                     label={ORIGINAL_RESULTS_LABEL}
+                     users={Rank_Total_Commits_Users}
+                   />
+                 </Typography>
+               </Grid>
+            }
+            {
+              Rank_Unique_Commits_Users && Rank_Unique_Commits_Users.length > 0 &&
+                <Grid item className="updated-results">
+                  <Typography>
+                    <ResultsTable
+                      label={UPDATED_RESULTS_LABEL}
+                      users={Rank_Unique_Commits_Users}
+                    />
+                  </Typography>
+                </Grid>
+            }
+            {
+              noSearchResults &&
+                <Grid item className="no-results">
+                  <Typography>
+                    <ResultsTable
+                      label={NO_RESULTS_LABEL}
+                      users={[]}
+                    />
+                  </Typography>
+                </Grid>
+            }
         </Grid>
       </div>
     )

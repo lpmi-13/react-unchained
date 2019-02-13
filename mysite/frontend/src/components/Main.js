@@ -5,11 +5,9 @@ import { Switch, Route } from 'react-router-dom';
 
 // Application
 import Home from './Home';
-import OriginalAlgoCode from './OriginalAlgoCode';
 import OriginalList from './OriginalList';
 import Search from './Search';
 import store from '../store';
-import UpdatedAlgoCode from './UpdatedAlgoCode';
 import UpdatedList from './UpdatedList';
 import '../styles/custom.scss';
 
@@ -17,10 +15,10 @@ const Main = () => (
   <main>
     <Provider store={store}>
       <Switch>
-        <Route path='/updated_list' render={() => <UpdatedList extraText={UpdatedAlgoCode} />} />
-        <Route path='/original_list' render={() => <OriginalList extraText={OriginalAlgoCode} />} />
+        <Route path='/updated_list' component={UpdatedList}/>
+        <Route path='/original_list' component={OriginalList}/>
         <Route path='/search' component={Search}/>
-        <Route path='/' component={Home}/>
+        <Route exact path='/' component={Home}/>
       </Switch>
     </Provider>
   </main>
