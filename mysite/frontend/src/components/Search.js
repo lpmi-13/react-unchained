@@ -85,7 +85,7 @@ class Search extends Component {
             }
             {
               Rank_Unique_Commits_Users && Rank_Unique_Commits_Users.length > 0 &&
-                <Grid item className="updated-results">
+                <Grid item xs={18} className="updated-results">
                   <Typography>
                     <ResultsTable
                       label={UPDATED_RESULTS_LABEL}
