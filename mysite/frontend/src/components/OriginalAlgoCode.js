@@ -1,8 +1,9 @@
 import React from 'react';
+import Typography from '@material-ui/core/Typography';
 
 const OriginalAlgoCode = () => {
   return (
-    <div className="listCopy">
+    <Typography>
       <h2>The original list</h2>
       <p>
         the following data comes from the
@@ -14,7 +15,7 @@ const OriginalAlgoCode = () => {
         repos at GitHub.com from Tue, 06 Dec 2016 17:06:46 GMT till
         Wed, 06 Dec 2017 17:06:46 GMT.
       </p>
-    </div>
+      </Typography>
   );
 };
 

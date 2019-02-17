@@ -13,6 +13,19 @@ import Paper from '@material-ui/core/Paper';
 // Application
 import UserResults from './UserResults';
 
+const styles = {
+  cells : {
+    padding: '1rem',
+  },
+  numeric: {
+    padding: '1rem',
+    textAlign: 'right',
+  },
+  tableBody: {
+    stripedRows: true,
+  }
+};
+
 const ResultsTable = ({ users, label }) => {
   return (
     <Paper classNames="results-table">
@@ -26,13 +39,13 @@ const ResultsTable = ({ users, label }) => {
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell>Rank</TableCell>
-                <TableCell>User</TableCell>
-                <TableCell>Contributions</TableCell>
+                <TableCell style={styles.cells}>Rank</TableCell>
+                <TableCell style={styles.cells}>User</TableCell>
+                <TableCell style={styles.cells}>Contributions</TableCell>
               </TableRow>
             </TableHead>
-            <TableBody>
-              <UserResults users={users} />
+            <TableBody stripedRows={styles.tableBody.stripedRows}>
+              <UserResults users={users} styles={styles} />
             </TableBody>
           </Table>
         </Grid>

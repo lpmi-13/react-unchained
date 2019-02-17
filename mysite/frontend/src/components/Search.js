@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
-import Typography from '@material-ui/core/Typography';
 
 // Application
 import ResultsTable from './ResultsTable';
@@ -45,13 +44,14 @@ class Search extends Component {
     } = this;
     
     // we haz no search results!
-    const noSearchResults = Rank_Unique_Commits_Users && Rank_Unique_Commits_Users.length === 0 &&
-                            Rank_Total_Commits_Users && Rank_Total_Commits_Users.length === 0;
+    const noSearchResults = (Rank_Unique_Commits_Users && Rank_Unique_Commits_Users.length === 0 &&
+                            Rank_Total_Commits_Users && Rank_Total_Commits_Users.length === 0) ||
+                            (!Rank_Unique_Commits_Users && !Rank_Total_Commits_Users);
 
     return (
       <div>
         <Grid container direction="column" alignItems="flex-start" spacing={24}>
-          <Grid item xs={8}>
+          <Grid item xs={14} md={8}>
             <TextField
               id="standard-name"
               label="user name"
@@ -61,10 +61,9 @@ class Search extends Component {
               variant="outlined"
             />
           </Grid>
-          <Grid item xs={8}>
+          <Grid item xs={14} md={8}>
             <Button 
               variant="contained"
-              className="floater"
               onClick={this.handleOnClick}
             >
               Search
@@ -74,35 +73,29 @@ class Search extends Component {
           {fetching && "Loading..."}
            {
              Rank_Total_Commits_Users && Rank_Total_Commits_Users.length > 0 &&
-               <Grid item xs={18} className="original-results">
-                 <Typography>
-                   <ResultsTable
-                     label={ORIGINAL_RESULTS_LABEL}
-                     users={Rank_Total_Commits_Users}
-                   />
-                 </Typography>
+               <Grid item xs={14} md={8}>
+                 <ResultsTable
+                   label={ORIGINAL_RESULTS_LABEL}
+                   users={Rank_Total_Commits_Users}
+                 />
                </Grid>
             }
             {
               Rank_Unique_Commits_Users && Rank_Unique_Commits_Users.length > 0 &&
-                <Grid item xs={18} className="updated-results">
-                  <Typography>
-                    <ResultsTable
-                      label={UPDATED_RESULTS_LABEL}
-                      users={Rank_Unique_Commits_Users}
-                    />
-                  </Typography>
+                <Grid item xs={14} md={8}>
+                  <ResultsTable
+                    label={UPDATED_RESULTS_LABEL}
+                    users={Rank_Unique_Commits_Users}
+                  />
                 </Grid>
             }
             {
               noSearchResults &&
-                <Grid item className="no-results">
-                  <Typography>
-                    <ResultsTable
-                      label={NO_RESULTS_LABEL}
-                      users={[]}
-                    />
-                  </Typography>
+                <Grid item xs={14} md={8}>
+                  <ResultsTable
+                    label={NO_RESULTS_LABEL}
+                    users={[]}
+                  />
                 </Grid>
             }
         </Grid>

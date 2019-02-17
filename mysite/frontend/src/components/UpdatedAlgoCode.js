@@ -1,8 +1,9 @@
 import React from 'react';
+import Typography from '@material-ui/core/Typography';
 
 const UpdatedAlgoCode = () => {
   return (
-    <div className="listCopy">
+    <Typography>
       <h2>Grabbing merged PRs</h2>
       <p>
         the following pseudocode is adapted from the
@@ -37,7 +38,7 @@ const UpdatedAlgoCode = () => {
           merged PRs from a particular user)
         </p>
       </div>
-    </div>
+      </Typography>
   );
 };
 

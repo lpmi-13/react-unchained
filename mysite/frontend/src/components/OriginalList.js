@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 // Application
@@ -13,6 +12,12 @@ import {
   FETCH_ORIGINAL_LIST,
   ORIGINAL_RESULTS_LABEL
 } from '../constants';
+
+const styles = {
+  content: {
+    margin: '.5rem'
+  }
+}
 
 class OriginalList extends Component {
 
@@ -27,15 +32,13 @@ class OriginalList extends Component {
     const { fetching, users } = this.props;
     return (
       <div>
-        <Grid container direction="column" alignItems="flex-start" spacing={24}>
-          <Grid item xs={18}>
+        <Grid container direction="column" alignItems="flex-start" spacing={16}>
+          <Grid item xs={12} md={8} style={styles.content}>
             <OriginalAlgoResults />
           </Grid>
-          <Grid item xs={18} className="original-results">
-            <Typography>
+          <Grid item xs={12} md={8} className="original-results">
               {!fetching && <ResultsTable label={ORIGINAL_RESULTS_LABEL} users={users} />}
               {fetching && <CircularProgress />}
-            </Typography>
           </Grid>
         </Grid>
       </div>

@@ -38,7 +38,7 @@ class HeaderAppBar extends Component {
       <div>
        <AppBar position="static">
          <Toolbar className="toolbar">
-             <Typography>Github User Stats</Typography>
+             <Typography color="inherit">Github User Stats</Typography>
              <IconButton
                aria-owns={ anchorEl ? 'simple-menu' : null}
                aria-haspopup="true"

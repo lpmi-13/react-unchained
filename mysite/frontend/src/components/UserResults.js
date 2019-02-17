@@ -4,16 +4,16 @@ import PropTypes from 'prop-types';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 
-const UserResults = ({ users }) => {
+const UserResults = ({ users, styles }) => {
   return (
     users.map((user) => {
       return (
-        <TableRow className="user-row" key={key(user)}>
-          <TableCell component="th" scope="row">
+        <TableRow key={key(user)}>
+          <TableCell component="th" scope="row" style={styles.numeric}>
             {user.rank}
           </TableCell>
-          <TableCell>{user.login}</TableCell>
-          <TableCell>{user.contributions}</TableCell>
+          <TableCell style={styles.cells}>{user.login}</TableCell>
+          <TableCell style={styles.numeric}>{user.contributions}</TableCell>
         </TableRow>
       );
     })
