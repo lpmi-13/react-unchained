@@ -4,11 +4,18 @@ import PropTypes from 'prop-types';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 
+
+
 const UserResults = ({ users, styles }) => {
+
+  const getStripedStyle = (index) => {
+    return { background: index % 2 ? '#fafafa' : '#eee' };
+  }
+
   return (
-    users.map((user) => {
+    users.map((user, index) => {
       return (
-        <TableRow key={key(user)}>
+        <TableRow key={key(user)} style={ getStripedStyle(index) }>
           <TableCell component="th" scope="row" style={styles.numeric}>
             {user.rank}
           </TableCell>

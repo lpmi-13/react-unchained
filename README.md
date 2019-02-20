@@ -32,6 +32,9 @@ Once there's data in postgres, go ahead and run the server
 `python3 manage.py runserver --settings=mysite.settings.dev`
 
 ## running the dev server (docker version)
+
+_EXPERIMENTAL_
+
 `npm install && npm run build` will put all the necessary js
 assets in the right place for django to find them. I wanted to
 hook up the webpack dev server hot reloading so you don't need
