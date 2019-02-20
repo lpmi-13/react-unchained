@@ -6,7 +6,7 @@ services:
 
   web:
     image: django_app
-    command: python ./mysite/manage.py runserver 0.0.0.0:8000 --settings=mysite.settings.dev
+    command: python ./mysite/manage.py runserver 0.0.0.0:8000 --settings=mysite.settings.docker
     ports:
       - "8000:8000"
     volumes:
@@ -20,7 +20,7 @@ services:
 
   seed:
     image: django_app
-    command: python ./mysite/manage.py seed stats --number=100 --settings=mysite.settings.dev
+    command: python ./mysite/manage.py seed stats --number=100 --settings=mysite.settings.docker
     volumes:
       - .:/code
     links:
