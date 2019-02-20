@@ -50,8 +50,8 @@ class Search extends Component {
 
     return (
       <div>
-        <Grid container direction="column" alignItems="flex-start" spacing={24}>
-          <Grid item xs={14} md={8}>
+        <Grid container direction="column" alignItems="flex-start" spacing={16}>
+          <Grid item xs={12} md={8}>
             <TextField
               id="standard-name"
               label="user name"
@@ -61,7 +61,7 @@ class Search extends Component {
               variant="outlined"
             />
           </Grid>
-          <Grid item xs={14} md={8}>
+          <Grid item xs={12} md={8}>
             <Button 
               variant="contained"
               onClick={this.handleOnClick}
@@ -73,7 +73,7 @@ class Search extends Component {
           {fetching && "Loading..."}
            {
              Rank_Total_Commits_Users && Rank_Total_Commits_Users.length > 0 &&
-               <Grid item xs={14} md={8}>
+               <Grid item xs={12} md={8}>
                  <ResultsTable
                    label={ORIGINAL_RESULTS_LABEL}
                    users={Rank_Total_Commits_Users}
@@ -82,7 +82,7 @@ class Search extends Component {
             }
             {
               Rank_Unique_Commits_Users && Rank_Unique_Commits_Users.length > 0 &&
-                <Grid item xs={14} md={8}>
+                <Grid item xs={12} md={8}>
                   <ResultsTable
                     label={UPDATED_RESULTS_LABEL}
                     users={Rank_Unique_Commits_Users}
@@ -91,7 +91,7 @@ class Search extends Component {
             }
             {
               noSearchResults &&
-                <Grid item xs={14} md={8}>
+                <Grid item xs={12} md={8}>
                   <ResultsTable
                     label={NO_RESULTS_LABEL}
                     users={[]}

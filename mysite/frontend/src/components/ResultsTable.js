@@ -44,7 +44,7 @@ const ResultsTable = ({ users, label }) => {
                 <TableCell style={styles.cells}>Contributions</TableCell>
               </TableRow>
             </TableHead>
-            <TableBody stripedRows={styles.tableBody.stripedRows}>
+            <TableBody>
               <UserResults users={users} styles={styles} />
             </TableBody>
           </Table>
