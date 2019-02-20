@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from '@material-ui/core/Button';
 import { Search } from '../Search';
 import sinon, { spy } from 'sinon';
 
@@ -19,7 +20,7 @@ describe('`Search` component', () => {
       const propsWithSpy = { ...defaultProps, onSearchUsers };
       const wrapper = shallow(<Search { ...propsWithSpy } />);
 
-      wrapper.find('.floater').simulate('click');
+      wrapper.find(Button).simulate('click');
       assert(onSearchUsers.called);
   });
 
@@ -30,7 +31,7 @@ describe('`Search` component', () => {
       const wrapper = shallow(<Search { ...propsWithSpy } />);
 
       wrapper.setState({ name });
-      wrapper.find('.floater').simulate('click');
+      wrapper.find(Button).simulate('click');
       sinon.assert.calledWith(onSearchUsers, { userName: name });
   });
 
