@@ -25,7 +25,7 @@ class HeaderAppBar extends Component {
 
     return (
       <div>
-       <AppBar position="static">
+       <AppBar position="fixed">
          <Toolbar className="toolbar">
          <Typography color="inherit">Github User Stats</Typography>
            <div style={styles.root}>

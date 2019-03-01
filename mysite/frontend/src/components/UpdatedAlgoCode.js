@@ -34,8 +34,11 @@ const UpdatedAlgoCode = () => {
       </pre>
       <p>
         is not the same as the author of the PR, we add the repo
-        name to the final count list. The score is the set of all
-        unique repo names in the list for a given username.
+        name to the final count list.
+      </p>
+      <p>
+        The score is the set of all unique repo names in the
+        list for a given username.
       </p>
       <div>
         <h3>The updated list</h3>

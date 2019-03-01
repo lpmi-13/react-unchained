@@ -1,4 +1,4 @@
-
+// base styles
 body {
   margin: 0;
 }
@@ -7,44 +7,89 @@ div {
   margin: 0 !important;
 }
 
-h2 {
-  font-size: 2.4rem;
-  line-height: 3rem;
-}
-
-h3 {
-  font-size: 1.8rem;
-  line-height: 2.4rem;
-}
-
 li a:link {
   text-decoration: none;
-}
-
-main {
-  padding: 1.5rem;
-}
-
-p {
-  font-size: 1.35rem;
-  line-height: 1.8rem;
-  max-width: 25rem;
-}
-
-pre code {
-  background-color: #eee;
-  border: 1px solid #999;
-  display: block;
-  font-size: 0.7rem;
-}
-
-.table-title {
-  background: #999;
-  flex-grow: 0;
-  padding: .1rem 0 .1rem 1.15rem;
 }
 
 .toolbar {
   display: flex;
   justify-content: space-between;
+}
+
+// smaller screens
+@media only screen and (max-width: 600px) {
+
+  a {
+    font-size: .7rem;
+  }
+
+  h2 {
+    font-size: 2.4rem;
+    line-height: 3rem;
+  }
+
+  h3 {
+    font-size: 1.8rem;
+    line-height: 2.4rem;
+  }
+
+  main {
+    padding: 5.5rem 1rem 1rem 1rem;
+  }
+
+  p {
+    font-size: 1.35rem;
+    line-height: 1.8rem;
+    max-width: 25rem;
+  }
+
+  pre code {
+    background-color: #eee;
+    border: 1px solid #999;
+    display: block;
+    font-size: 0.7rem;
+  }
+
+  .table-title {
+    background: #999;
+    flex-grow: 0;
+    padding: .1rem 0 .1rem 1.15rem;
+  }
+}
+
+// larger screens
+@media only screen and (min-width: 601px) {
+
+  h2 {
+    font-size: 3rem;
+    line-height: 3.4rem;
+  }
+
+  h3 {
+    font-size: 2.2rem;
+    line-height: 2.6rem;
+  }
+
+  main {
+    padding: 5rem 2rem 2rem 2rem;
+  }
+
+  p {
+    font-size: 1.75rem;
+    line-height: 2.1rem;
+    max-width: 35rem;
+  }
+
+  pre code {
+    background-color: #eee;
+    border: 1px solid #999;
+    display: block;
+    font-size: 0.85rem;
+  }
+
+  .table-title {
+    background: #999;
+    flex-grow: 0;
+    padding: .2rem 0 .2rem 1.25rem;
+  }
 }
