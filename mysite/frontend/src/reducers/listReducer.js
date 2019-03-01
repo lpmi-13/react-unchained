@@ -16,10 +16,7 @@ const initialState = {
     originalFetching: false,
     originalUsers: [],
     searchError: null,
-    searchResults: {
-      Rank_Total_Commits_Users: [],
-      Rank_Unique_Commits_Users: [],
-    },
+    searchResults: [],
     searchingUsers: false,
     updatedAlreadyFetched: false,
     updatedError: null,

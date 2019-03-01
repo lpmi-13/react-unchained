@@ -10,6 +10,6 @@ export const SEARCH_USERS_ERROR = 'SEARCH_USERS_ERROR';
 export const SEARCH_USERS_SUCCESS = 'SEARCH_USERS_SUCCESS';
 
 // STRING CONSTANTS
-export const NO_RESULTS_LABEL = 'no results';
-export const ORIGINAL_RESULTS_LABEL = 'total commits';
-export const UPDATED_RESULTS_LABEL = 'unique merged PR\'s';
+export const NO_RESULTS_LABEL = 'No results';
+export const ORIGINAL_RESULTS_LABEL = 'Total commits';
+export const UPDATED_RESULTS_LABEL = 'Unique merged PRs';

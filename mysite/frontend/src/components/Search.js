@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 
@@ -28,7 +29,8 @@ class Search extends Component {
   };
   
   handleOnClick = () => {
-    this.props.onSearchUsers({ userName: this.state.name });
+    const { name } = this.state;
+    this.props.onSearchUsers({ userName: name });
   }
 
   render() {
@@ -40,13 +42,12 @@ class Search extends Component {
           Rank_Total_Commits_Users,
           Rank_Unique_Commits_Users,
         }
-      }
+      },
     } = this;
     
     // we haz no search results!
-    const noSearchResults = (Rank_Unique_Commits_Users && Rank_Unique_Commits_Users.length === 0 &&
-                            Rank_Total_Commits_Users && Rank_Total_Commits_Users.length === 0) ||
-                            (!Rank_Unique_Commits_Users && !Rank_Total_Commits_Users);
+    const noSearchResults = (Rank_Total_Commits_Users && Rank_Total_Commits_Users.length < 1) && 
+                            (Rank_Unique_Commits_Users && Rank_Unique_Commits_Users.length < 1);
 
     return (
       <div>
@@ -55,9 +56,9 @@ class Search extends Component {
             <TextField
               id="standard-name"
               label="user name"
-              value={this.state.name}
-              onChange={this.handleChange('name')}
               margin="normal"
+              onChange={this.handleChange('name')}
+              value={this.state.name}
               variant="outlined"
             />
           </Grid>
@@ -70,7 +71,7 @@ class Search extends Component {
             </Button>
           </Grid>
           
-          {fetching && "Loading..."}
+          {fetching && <CircularProgress/>}
            {
              Rank_Total_Commits_Users && Rank_Total_Commits_Users.length > 0 &&
                <Grid item xs={12} md={8}>
