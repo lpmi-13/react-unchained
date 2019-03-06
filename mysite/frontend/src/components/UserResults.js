@@ -3,7 +3,7 @@ import key from 'weak-key';
 import PropTypes from 'prop-types';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
-import LazyLoad from 'react-lazy-load';
+import { LazyImage } from 'react-lazy-images';
 
 const UserResults = ({ users, styles }) => {
 
@@ -15,9 +15,16 @@ const UserResults = ({ users, styles }) => {
     users.map((user, index) => {
       return (
         <TableRow key={key(user)} style={ getStripedStyle(index) }>
-          <LazyLoad width={40}>
-            <img style={styles.avatar} src={`https://github.com/${user.login}.png?size=40`}></img>
-          </LazyLoad>
+          <TableCell style={styles.avatar}>
+            <LazyImage
+              alt="github avatar" 
+              src={`https://github.com/${user.login}.png?size=40`}
+              placeholder={({ ref }) => (
+                <img ref={ref} src={`https://github.com/github.png?size=40`} alt={"github avatar"} />
+              )}
+              actual={({ imageProps }) => <img {...imageProps} />}
+            />
+          </TableCell>
           <TableCell component="th" scope="row" style={styles.numeric}>
             {user.rank}
           </TableCell>

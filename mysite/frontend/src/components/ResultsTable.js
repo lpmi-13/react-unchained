@@ -17,13 +17,13 @@ const styles = {
   avatar: {
     maxWidth: '40px',
     minWidth: '40px',
-    padding: '1rem',
+    padding: '.5rem',
   },
   cells : {
-    padding: '1rem',
+    padding: '.5rem',
   },
   numeric: {
-    padding: '1rem',
+    padding: '.5rem',
     textAlign: 'right',
   },
   tableBody: {
