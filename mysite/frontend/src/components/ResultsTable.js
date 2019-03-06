@@ -14,6 +14,11 @@ import Paper from '@material-ui/core/Paper';
 import UserResults from './UserResults';
 
 const styles = {
+  avatar: {
+    maxWidth: '40px',
+    minWidth: '40px',
+    padding: '1rem',
+  },
   cells : {
     padding: '1rem',
   },
@@ -39,6 +44,7 @@ const ResultsTable = ({ users, label }) => {
           <Table>
             <TableHead>
               <TableRow>
+                <TableCell style={styles.cells}></TableCell>
                 <TableCell style={styles.cells}>Rank</TableCell>
                 <TableCell style={styles.cells}>User</TableCell>
                 <TableCell style={styles.cells}>Contributions</TableCell>

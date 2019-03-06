@@ -16,6 +16,7 @@ const UserResults = ({ users, styles }) => {
     users.map((user, index) => {
       return (
         <TableRow key={key(user)} style={ getStripedStyle(index) }>
+          <img style={styles.avatar} src={`https://github.com/${user.login}.png?size=40`}></img>
           <TableCell component="th" scope="row" style={styles.numeric}>
             {user.rank}
           </TableCell>
