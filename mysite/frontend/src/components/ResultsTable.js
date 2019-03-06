@@ -21,6 +21,7 @@ const styles = {
   },
   cells : {
     padding: '.5rem',
+    whiteSpace: 'nowrap',
   },
   numeric: {
     padding: '.5rem',
